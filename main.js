@@ -7,6 +7,7 @@ btnSearch.addEventListener("click", async () => {
 
     const data = await showMeteo(city);
     const meteoDTO = createWeatherDTO(data);
+    displayWeather(meteoDTO);
 
     console.log(meteoDTO);
 });
@@ -23,4 +24,18 @@ function createWeatherDTO(data){
     temperature: data.main.temp,
     weather: data.weather[0].main, 
   };
+}
+
+/*------------------------------------------------------
+
+AFFICHAGE HTML
+
+------------------------------------------------------*/
+
+function displayWeather(meteo){
+  document.getElementById("city").textContent = meteo.city;
+  document.getElementById("temperature").textContent = meteo.temperature;
+  document.getElementById("weather").textContent = meteo.weather;
+  document.getElementById("weather-container").classList.remove("hidden");
+  document.getElementById("weather-container").classList.add("show");
 }

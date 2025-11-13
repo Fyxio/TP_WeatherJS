@@ -60,9 +60,11 @@ body {
     min-height: 100vh;
     background: linear-gradient(180deg, #0b172a 0%, #1f2a3a 40%, #f2f4f8 100%);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;    /* ❤️ AJOUT ICI */
+    justify-content: flex-start;
+    align-items: center;       /* Centre tout horizontalement */
 }
+
 
 /* Header principal */
 #head-site {
@@ -151,5 +153,69 @@ body {
 
     .search-btn {
         align-self: center;
+    }
+}
+
+/* --- CARTE MÉTÉO --- */
+
+#weather-container {
+    margin-top: 30px;
+    padding: 25px;
+    width: min(400px, 90%);
+    
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+    color: white;
+
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.3s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Titre : nom de la ville */
+#city {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffcc40; /* léger rappel du jaune/orang */
+}
+
+/* Température */
+#temperature {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Description météo (“nuageux”, etc.) */
+#weather {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    opacity: 0.95;
+}
+
+/* Animation d’apparition */
+.weather.show {
+    display: block !important;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
