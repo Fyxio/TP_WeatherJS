@@ -9,11 +9,30 @@ export interface WeatherData {
 export enum WeatherCondition{
   Clear = "clear",
   Rain = "rain",
-  Cloud = "cloud",
+  Clouds = "clouds",
   Snow = "snow",
   Mist = "mist",
   Fog = "fog",
   Other = "Other"
+}
+
+export function getWeatherCondition(apiMain :string): WeatherCondition{
+  switch(apiMain.toLocaleLowerCase()){
+    case "clear":
+      return WeatherCondition.Clear;
+    case "rain":
+      return WeatherCondition.Rain;
+    case "clouds":
+      return WeatherCondition.Clouds;
+    case "snow":
+      return WeatherCondition.Snow;
+    case "mist":
+      return WeatherCondition.Mist;
+    case "fog":
+      return WeatherCondition.Fog;
+    default:
+      return WeatherCondition.Other
+  }
 }
 
 export const getWeatherByCity = async (city: string): Promise<WeatherData> => {

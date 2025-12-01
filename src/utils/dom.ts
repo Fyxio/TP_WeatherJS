@@ -1,5 +1,5 @@
 import type { WeatherData } from "./api";
-import { WeatherCondition } from "./api";
+import { getWeatherCondition, WeatherCondition } from "./api";
 
 const apiKey = "f1c121af4385503efcdcac72ef9891f0";
 
@@ -16,11 +16,11 @@ const resultTemp = document.getElementById("temp") as HTMLElement;
 const resultCity = document.getElementById("city-name") as HTMLElement;
 const resultEmoji = document.getElementById("emoji") as HTMLElement;
 
-export const getWeatherEmoji = (weather : string) => {
+export const getWeatherEmoji = (weather : WeatherCondition): string => {
     switch (weather){
       case WeatherCondition.Clear :
         return "☀️";
-      case WeatherCondition.Cloud : 
+      case WeatherCondition.Clouds : 
         return "☁️";
       case WeatherCondition.Rain :
         return "🌧️";
@@ -49,7 +49,10 @@ export const setBackgroundByTemperature = (temp : number) => {
 export const populateResult = (weather : WeatherData) => {
     resultCity.innerText = weather.city;
     resultTemp.innerText = `${Math.round(weather.temperature)}°C`;
-    resultEmoji.innerText = getWeatherEmoji(weather.weather);
+
+    const condition: WeatherCondition = getWeatherCondition(weather.weather);
+
+    resultEmoji.innerText = getWeatherEmoji(condition);
     setBackgroundByTemperature(weather.temperature);
 };
 
