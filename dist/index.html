@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emoji Weather</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="weather-app">
+      <h1>🏙️ Emoji Weather</h1>
+      <div class="search-bar">
+        <input id="city-input" type="text" placeholder="Entrez une ville..." />
+        <button id="search-btn">Rechercher</button>
+        <button id="geo-btn">🌍 Autour de moi</button>
+      </div>
+
+      <section id="result" class="result-card hidden">
+        <div id="city-name" class="city-name">—</div>
+        <div id="temp" class="temp">— °C</div>
+        <div id="emoji" class="emoji">❓</div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
